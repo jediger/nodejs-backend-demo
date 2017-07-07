@@ -1,13 +1,13 @@
-var db = require('../db');
+var db = require('../mysql');
 
 module.exports = {
-  getAllBirds: function() {
-    return db.query('SELECT * FROM birds');
-  },
-  getBird: function(id) {
-    return db.get('SELECT * FROM birds WHERE id = ?', [id]);
-  },
-  addBird: function(name) {
-    return db.add('birds', {name: name});
-  }
+	getAllBirds: function() {
+		return db.query('SELECT * FROM birds');
+	},
+	getBird: function(id) {
+		return db.get('SELECT * FROM birds WHERE id = ?', [id]);
+	},
+	addBird: function(name) {
+		return db.add('birds', {name: name});
+	}
 };

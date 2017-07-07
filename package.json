@@ -4,13 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ext .js ./",
+    "dev": "nodemon --exec \"eslint --ext .js ./ && node index.js\"",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongodb": "^2.2.29",
+    "morgan": "^1.8.2",
     "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb": "^15.0.2",
+    "nodemon": "^1.11.0"
   }
 }
