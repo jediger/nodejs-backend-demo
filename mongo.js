@@ -1,11 +1,12 @@
 const MongoClient = require('mongodb').MongoClient
+var mongoConfig = require('./config').mongo;
 
 var db = new Promise(function(resolve, reject) {
-	MongoClient.connect('mongodb://127.0.0.1:27017/backend-demo', (err, database) => {
+	MongoClient.connect(mongoConfig, (err, database) => {
 		if(err) {
 			return reject(err);
 		}
-		console.log('connected to Mongo');
+		console.log('Connected to Mongo');
 		resolve(database);
 	});
 });

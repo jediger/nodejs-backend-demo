@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 	});
 });
 
-router.get('/:id', function(req, res) {
+router.get('/:id', (req, res) => {
 	birdApi.getBird(req.params.id).then(function(bird) {
 		res.json(bird);
 	}, function(error) {

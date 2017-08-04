@@ -10,9 +10,9 @@ router.post('/login', function(req, res) {
 			return res.status(401).send("Incorrect Username or Password");
 		}
 
+		delete user.password;
 		let token = authApi.createToken(user);
 
-		delete user.password;
 		user.token = token;
 
 		res.json(user);

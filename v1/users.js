@@ -35,7 +35,7 @@ router.post('/', authApi.verifyToken, function(req, res) {
 	});
 });
 
-router.put('/:id', authApi.verifyToken, function(req, res) {
+router.put('/me', authApi.verifyToken, function(req, res) {
 	userId = req.user.id;
 	if(req.user.admin === 1) {
 		userId = Number.parseInt(req.params.id);

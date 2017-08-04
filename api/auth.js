@@ -1,7 +1,6 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 var config = require('../config');
-
 var tokenLifetime = '24h';
 
 module.exports = {

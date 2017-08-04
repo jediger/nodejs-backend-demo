@@ -6,17 +6,6 @@ var authApi = require('../api/auth');
 router.get('/user/:userId', authApi.verifyToken, function(req, res) {
 	sightingsApi.getSightingsByUser(Number.parseInt(req.params.userId)).then(function(sightings) {
 		res.json(sightings);
-		/*let sightingsP = sightings.map(function(sighting) {
-			return new Promise(function(resolve, reject) {
-				birdApi.getBird(sighting.bird).then(function(bird) {
-					sighting.bird = bird;
-					resolve(sighting);
-				});
-			});
-		});
-		Promise.all(sightingsP).then(values => {
-			res.json(values);
-		});*/
 	}, function(error) {
 		res.status(error.code).send(error.message);
 	});

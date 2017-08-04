@@ -1,10 +1,12 @@
 var mysql = require('mysql');
+var config = require('./config').mysql;
+
 var pool = mysql.createPool({
-	connectionLimit: 20,
-	host: 'localhost',
-	user: 'root',
-	password: '',
-	database: 'backend-demo'
+	connectionLimit: config.connectionLimit,
+	host: config.host,
+	user: config.user,
+	password: config.password,
+	database: config.database
 });
 
 var db_tables = [
@@ -13,6 +15,18 @@ var db_tables = [
 ];
 
 module.exports = {
+	testConnection: function() {
+		return new Promise(function(resolve, reject) {
+			pool.getConnection(function(err, connection) {
+				if(err) {
+					return reject('Error connecting to MySQL: ' + err.stack);
+				}
+				console.log('Connected to MySQL')
+				resolve();
+				connection.release();
+			});
+		});
+	},
 	query: function(queryString, params) {
 		return new Promise(function(resolve, reject) {
 			pool.query(queryString, params, function(error, results, fields) {
